@@ -1,0 +1,46 @@
+class ATM:
+    def __init__(self, balance=1000):
+        self.balance = balance
+
+    def display_balance(self):
+        print(f"Your account balance is ${self.balance}")
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrawal successful. Remaining balance: ${self.balance}")
+        else:
+            print("Invalid withdrawal amount or insufficient funds.")
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposit successful. Updated balance: ${self.balance}")
+        else:
+            print("Invalid deposit amount.")
+
+# Example usage:
+if __name__ == "__main__":
+    atm = ATM()
+
+    while True:
+        print("\n1. Display Balance")
+        print("2. Withdraw Money")
+        print("3. Deposit Money")
+        print("4. Exit")
+
+        choice = input("Enter your choice (1-4): ")
+
+        if choice == "1":
+            atm.display_balance()
+        elif choice == "2":
+            amount = float(input("Enter withdrawal amount: $"))
+            atm.withdraw(amount)
+        elif choice == "3":
+            amount = float(input("Enter deposit amount: $"))
+            atm.deposit(amount)
+        elif choice == "4":
+            print("Exiting ATM. Thank you!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
